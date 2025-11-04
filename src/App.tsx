@@ -6,7 +6,7 @@ export const App = () => {
 
   return (
     <>
-      <header className="shadow">
+      <header className="shadow-md">
         <Header />
       </header>
       <main>

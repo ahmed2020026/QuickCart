@@ -11,8 +11,6 @@ export const Header = () => {
     const menuRef = useRef<HTMLElement>(null);
 
     const height: number = useGetHeight(menuRef);
-    //console.log(height)
-
 
     useOutClick({
         ref: BtnRef,
@@ -22,17 +20,15 @@ export const Header = () => {
 
     return (
         <div className="container relative">
-            <div className="flex items-center justify-between">
+            <div className="flex items-center justify-between py-2">
                 <Link to="/" aria-label="Logo">
-                    <Btn color="">
-                        <img src={assets.logo} alt="logo" />
-                    </Btn>
+                    <img src={assets.logo} alt="logo" />
                 </Link>
 
                 {/* routes in large screen */}
                 <nav className="hidden md:block pr-5">
                     {RouterLinks.map((ele, index) => (
-                        <Btn key={index} color="text-gray-500 hover:text-gray-800 transition-all">
+                        <Btn key={index} color="text-gray-800 hover:text-black transition-all">
                             <Link to={ele.RouterPath} aria-label={ele.RouterText}>
                                 {ele.RouterText}
                             </Link>
@@ -41,11 +37,11 @@ export const Header = () => {
                 </nav>
 
                 {/* routes in small screen */}
-                <nav className={`md:hidden ${open ? `opacity-100` : "opacity-0"} duration-300 overflow-hidden shadow-md p-2 rounded absolute top-full left-[50%] -translate-x-3/6 w-[95%]`} ref={menuRef} style={{
+                <nav className={`md:hidden ${open ? `opacity-100` : "opacity-0"} duration-300 border border-gray-200 border-t-0 overflow-hidden shadow-md p-2 rounded absolute top-full left-[50%] -translate-x-3/6 w-[95%]`} ref={menuRef} style={{
                     height: open ? `${height}px` : "0px",
                 }}>
                     {RouterLinks.map((ele, index) => (
-                        <Btn key={index} color="text-gray-500 hover:text-gray-800 transition-all w-full">
+                        <Btn key={index} color="text-gray-800 hover:text-black transition-all w-full">
                             <Link to={ele.RouterPath} className="block w-full text-left" aria-label={ele.RouterText}>
                                 {ele.RouterText}
                             </Link>
