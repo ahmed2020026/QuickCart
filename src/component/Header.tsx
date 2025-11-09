@@ -26,9 +26,9 @@ export const Header = () => {
                 </Link>
 
                 {/* routes in large screen */}
-                <nav className="hidden md:block pr-5">
+                <nav className="hidden md:block pr-5 relative">
                     {RouterLinks.map((ele, index) => (
-                        <Btn key={index} color="text-gray-800 hover:text-black transition-all">
+                        <Btn key={index} color="text-gray-600 hover:text-black transition-all">
                             <Link to={ele.RouterPath} aria-label={ele.RouterText}>
                                 {ele.RouterText}
                             </Link>
@@ -37,8 +37,9 @@ export const Header = () => {
                 </nav>
 
                 {/* routes in small screen */}
-                <nav className={`md:hidden ${open ? `opacity-100` : "opacity-0"} duration-300 border border-gray-200 border-t-0 overflow-hidden shadow-md p-2 rounded absolute top-full left-[50%] -translate-x-3/6 w-[95%]`} ref={menuRef} style={{
+                <nav className={`md:hidden ${open ? `opacity-100` : "opacity-0"} duration-300 border border-gray-200 bg-white border-t-0 overflow-hidden shadow-md p-2 rounded absolute top-full left-[50%] -translate-x-3/6 w-[95%]`} ref={menuRef} style={{
                     height: open ? `${height}px` : "0px",
+                    zIndex: -2
                 }}>
                     {RouterLinks.map((ele, index) => (
                         <Btn key={index} color="text-gray-800 hover:text-black transition-all w-full">

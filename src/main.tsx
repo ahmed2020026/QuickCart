@@ -1,13 +1,22 @@
 import { createRoot } from 'react-dom/client'
 import { App } from './App';
-import './App.css'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
+import './App.css';
 import { BrowserRouter } from 'react-router-dom';
+import { Store } from './redux/store';
+import { Provider } from 'react-redux';
+
 const rootElement = document.getElementById('root');
 if (!rootElement) {
   throw Error('Element is null')
 }
+
 createRoot(rootElement).render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <Provider store={Store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>
 )

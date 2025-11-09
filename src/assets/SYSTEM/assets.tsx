@@ -426,6 +426,36 @@ export const addressDummyData = [
   }
 ]
 
+export const jumbtron = [
+  {
+    head: 'Limited Time Offer 30% Off',
+    disc: 'Experience Pure Sound - Your Perfect Headphones Awaits!',
+    image: header_headphone_image,
+    foot: {
+      text: 'Order Now',
+      detail: 'Show'
+    }
+  },
+  {
+    head: 'Hurry up only few lefts!',
+    disc: 'Next-Level Gaming Starts Here - Discover PlayStation 5 Today!',
+    image: header_playstation_image,
+    foot: {
+      text: 'Order Now',
+      detail: 'Show'
+    }
+  },
+  {
+    head: 'Exclusive Deal 40% Off',
+    disc: 'Power Meets Elegance - Apple MacBook Pro is Here for you!',
+    image: header_macbook_image,
+    foot: {
+      text: 'Order Now',
+      detail: 'Show'
+    }
+  }
+]
+
 export const RouterLinks = [
   {
     RouterText: 'Home',
