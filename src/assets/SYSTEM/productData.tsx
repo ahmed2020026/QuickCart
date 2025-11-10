@@ -1,5 +1,5 @@
 import { assets } from "./assets";
-interface product {
+export interface product {
   id: number;
   name: string,
   description: string,
@@ -47,7 +47,7 @@ export const products: product[] = [
     description: "Ultra-HD, 825GB SSD, Ray Graphics",
     rating: 4.5,
     price: "$499.99",
-    imgSrc: assets.apple_earphone_image,
+    imgSrc: assets.playstation_image,
   },
   {
     id: 6,
