@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { jumbtron } from "../assets/SYSTEM/assets"
 import { SliderComponent as Slider } from "../component/Slider"
-import { Title } from "../component/title"
+import { Title } from "../component/Title"
 import type { product } from "../assets/SYSTEM/productData"
 import { Button } from "@headlessui/react"
 import { Cart } from "../component/Cart"

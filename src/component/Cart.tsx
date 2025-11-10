@@ -4,9 +4,9 @@ import { Link } from "react-router-dom"
 
 export const Cart = ({ product }: { product: product }) => {
     return (
-        <div className="relative">
-            <div className="cart-image mb-2 bg-gray-200 flex justify-center items-center rounded-lg">
-                <img src={product.imgSrc} alt={product.name} className="block w-52 h-auto max-w-full" />
+        <div className="relative group">
+            <div className="cart-image mb-2 bg-gray-100 flex justify-center items-center rounded-lg overflow-hidden">
+                <img src={product.imgSrc} alt={product.name} className="block w-52 h-auto max-w-full transform transition-transform duration-300 group-hover:scale-105" />
             </div>
             <div className="cart-info mb-2">
                 <h2 className="text-gray-800 font-medium text-nowrap overflow-hidden text-ellipsis">{product.name}</h2>
