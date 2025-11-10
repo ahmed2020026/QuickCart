@@ -37,7 +37,7 @@ export const SliderComponent = ({ items }: SliderProps) => {
                             <div className="parent grid grid-cols-1 md:grid-cols-3 md:min-h-72">
                                 <div className="md:col-span-2 lg:pr-50 order-2 md:order-1">
                                     <p className="text-base text-orange-500 mt-10">{item.head}</p>
-                                    <h2 className="max-w-lg md:text-[40px] md:leading-[48px] text-2xl font-semibold">{item.disc}</h2>
+                                    <h2 className="max-w-lg md:text-[40px] md:leading-[48px] pr-2 text-2xl font-semibold">{item.disc}</h2>
                                     <div className="btns flex gap-2 mt-5">
                                         <Btn children={item.foot.text} color="bg-orange-500 hover:bg-orange-600 transition-all text-white font-medium" />
                                         <Btn children={item.foot.detail} color="font-medium bg-gray-200 md:bg-transparent transition-all hover:bg-gray-200" />
