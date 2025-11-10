@@ -21,10 +21,11 @@ export const SliderComponent = ({ items }: SliderProps) => {
     let settings = {
         dots: false,
         infinite: true,
-        speed: 500,
+        speed: 1000,
         slidesToShow: 1,
         slidesToScroll: 1,
-        arrows: false
+        arrows: false,
+        autoplay:true,
     };
 
     return (
@@ -32,7 +33,7 @@ export const SliderComponent = ({ items }: SliderProps) => {
             {
                 items.map((item, index) => {
                     return (
-                        <div className="p-5" key={index}>
+                        <div className="p-5 bg-gray-100 rounded-lg flex" key={index}>
                             <div className="parent grid grid-cols-1 md:grid-cols-3 md:min-h-72">
                                 <div className="md:col-span-2 lg:pr-50 order-2 md:order-1">
                                     <p className="text-base text-orange-500 mt-10">{item.head}</p>
@@ -43,7 +44,7 @@ export const SliderComponent = ({ items }: SliderProps) => {
                                     </div>
                                 </div>
                                 <div className="md:col-span-1 text-center flex justify-between order-1 md:order-2 items-center h-[250px] md:h-auto">
-                                    <img src={item.image} alt={item.head} height={747} width={654} className="block m-auto md:w-72 w-48" />
+                                    <img src={item.image} alt={item.head} height={747} width={654} className="block m-auto md:w-72 w-48 md:h-60" />
                                 </div>
                             </div>
                         </div>

@@ -6,10 +6,13 @@ export const Home = () => {
         <>
             <section>
                 <div className="container">
-                    <div className="p-2 bg-gray-100 rounded-lg mt-5">
+                    <div className="p-2 mt-5">
                         <Slider items={jumbtron} />
                     </div>
                 </div>
+            </section>
+            <section>
+                <div className="container"></div>
             </section>
         </>
     )
