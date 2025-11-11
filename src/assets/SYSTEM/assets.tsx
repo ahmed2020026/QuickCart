@@ -478,3 +478,19 @@ export const RouterLinks = [
     RouterPath: '/dashbord'
   },
 ]
+
+export const FeatureData = [
+  {
+    header: 'Unparalleled Sound',
+    disc: 'Experience crystal-clear audio with premium headphones.',
+    image: girl_with_earphone_image,
+  },{
+    header: 'Stay Connected',
+    disc: 'Compact and stylish earphones for every occasion.',
+    image: girl_with_headphone_image,
+  },{
+    header: 'Power in Every Pixel',
+    disc: 'Shop the latest laptops for work, gaming, and more.',
+    image: boy_with_laptop_image,
+  }
+]

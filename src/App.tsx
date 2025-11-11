@@ -1,13 +1,14 @@
 import { Route, Routes } from "react-router-dom"
 import { Header } from "./component/Header"
 import { Home } from "./pages/Home"
+import { Footer } from "./component/Footer"
 
 
 export const App = () => {
 
   return (
     <>
-      <header className="shadow-md relative bg-white" style={{zIndex:1200}}>
+      <header className="shadow-md relative bg-white" style={{ zIndex: 1200 }}>
         <Header />
       </header>
       <main>
@@ -15,7 +16,9 @@ export const App = () => {
           <Route path="/" element={<Home />} />
         </Routes>
       </main>
-      <footer></footer>
+      <footer>
+        <Footer />
+      </footer>
     </>
   )
 }
