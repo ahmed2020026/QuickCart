@@ -32,9 +32,12 @@ export const Home = () => {
                         }
                     </div>
                     <div className="flex items-center justify-center py-5">
-                        <Button className={`inline-flex items-center border font-medium border-gray-500 text-gray-500 gap-2 rounded-md px-5 text-base py-1.5 shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`} >
-                            <Link to={'/all-products'}>see more</Link>
-                        </Button>
+                        <Link to={'/all-products'} className="rounded-md">
+                            <Button tabIndex={-1}
+                                aria-hidden="true" className={`inline-flex items-center border font-medium border-gray-500 text-gray-500 gap-2 rounded-md px-5 text-base py-1.5 shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`} >
+                                see more
+                            </Button>
+                        </Link>
                     </div>
                 </div>
             </section>
@@ -54,7 +57,13 @@ export const Home = () => {
                 <div className="container">
                     <div className="grid grid-cols-1 lg:grid-cols-3 bg-gray-200">
                         <div className="pt-10 lg:pt-0">
-                            <img src={assets.jbl_soundbox_image} alt="jbl" className="w-[200px] h-[200px] lg:w-72 lg:h-72 block mx-auto" />
+                            <img
+                                src={assets.jbl_soundbox_image}
+                                alt="jbl"
+                                className="w-[200px] h-[200px] lg:w-72 lg:h-72 block mx-auto"
+                                loading="lazy"
+                                onLoad={(e) => e.currentTarget.classList.remove('blur-sm')}
+                            />
                         </div>
                         <div className="text-center lg:my-0 p-3 flex flex-col items-center justify-center">
                             <h2 className="mt-10 text-2xl lg:text-4xl font-bold text-gray-800">Level Up Your Gaming Experience</h2>
