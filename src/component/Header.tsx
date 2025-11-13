@@ -47,7 +47,7 @@ export const Header = () => {
                 </nav>
 
                 <div className="flex items-center gap-2">
-                    <Btn children={<img src={HEADER_IMAGE.menu} />} aria-lable="menu icon to open and close menu" color="md:hidden" func={() => setOpen(!open)} ref={BtnRef} />
+                    <Btn children={<img src={HEADER_IMAGE.menu} alt="menu-icon" />} aria-lable="menu icon to open and close menu" color="md:hidden" func={() => setOpen(!open)} ref={BtnRef} />
                     <Btn children={<img src={HEADER_IMAGE.search} alt="search-icon" />} aria-lable = 'search icon to search about product' color="" />
                     <Btn children = {<img src={HEADER_IMAGE.user} alt="user-icon" />} aria-lable = 'sign in or register' color=""/>
                 </div>
