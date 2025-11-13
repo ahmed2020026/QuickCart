@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { assets } from "../assets/SYSTEM/assets"
+import { HEADER_IMAGE } from "../assets/SYSTEM/assets"
 
 export const Footer = () => {
     return (
@@ -7,7 +7,7 @@ export const Footer = () => {
             <div className="container">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-10">
                     <div>
-                        <img src={assets.logo} width={129} height={34} alt="footer_logo" />
+                        <img src={HEADER_IMAGE.logo} width={129} height={34} alt="footer_logo" />
                         <p className="mt-4 text-sm text-gray-700">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 lg:gap-10">

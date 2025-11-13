@@ -98,6 +98,18 @@ export const assets = {
   checkmark
 };
 
+export const HEADER_IMAGE = {
+  logo: assets.logo,
+  search: assets.search_icon,
+  menu: assets.menu_icon,
+  cart:assets.cart_icon,
+  user:assets.user_icon
+};
+
+export const Image = {
+  jbl_soundbox_image, md_controller_image
+}
+
 export const BagIcon = () => {
   return (
     <svg className="w-5 h-5 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">

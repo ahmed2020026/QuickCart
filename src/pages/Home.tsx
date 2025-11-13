@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { assets, FeatureData, jumbtron } from "../assets/SYSTEM/assets"
+import { Image, FeatureData, jumbtron } from "../assets/SYSTEM/assets"
 import { SliderComponent as Slider } from "../component/Slider"
 import { Title } from "../component/Title"
 import type { product } from "../assets/SYSTEM/productData"
@@ -62,7 +62,7 @@ export const Home = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-3 bg-gray-100 rounded-md">
                         <div className="pt-10 lg:pt-0">
                             <img
-                                src={assets.jbl_soundbox_image}
+                                src={Image.jbl_soundbox_image}
                                 alt="jbl"
                                 className="w-[200px] h-[200px] lg:w-72 lg:h-72 block mx-auto"
                                 loading="lazy"
@@ -75,7 +75,7 @@ export const Home = () => {
                             <Btn children="Buy Now" color="bg-orange-600 hover:bg-orange-700 text-white px-10 py-2" />
                         </div>
                         <div className="flex justify-end pt-10 lg:pt-0">
-                            <img src={assets.md_controller_image} alt="md" className="lg:w-72 lg:h-72 block" />
+                            <img src={Image.md_controller_image} alt="md" className="lg:w-72 lg:h-72 block" />
                         </div>
                     </div>
                 </div>

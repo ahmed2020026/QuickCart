@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { assets, RouterLinks } from "../assets/SYSTEM/assets";
+import { HEADER_IMAGE, RouterLinks } from "../assets/SYSTEM/assets";
 import { Btn } from "./Btn";
 import { useState, useRef } from "react";
 import { useOutClick } from "../hooks/useOutClick";
@@ -22,17 +22,15 @@ export const Header = () => {
         <div className="container relative">
             <div className="flex items-center justify-between py-2">
                 <Link to="/" aria-label="Logo">
-                    <img src={assets.logo} alt="logo" />
+                    <img src={HEADER_IMAGE.logo} alt="logo" />
                 </Link>
 
                 {/* routes in large screen */}
                 <nav className="hidden md:block pr-5 relative">
                     {RouterLinks.map((ele, index) => (
-                        <Btn key={index} color="text-gray-600 hover:text-black transition-all">
-                            <Link to={ele.RouterPath} aria-label={ele.RouterText}>
-                                {ele.RouterText}
-                            </Link>
-                        </Btn>
+                        <Link to={ele.RouterPath} key={index}>
+                            <Btn children={ele.RouterText} color="text-gray-600 hover:text-black transition-all" />
+                        </Link>
                     ))}
                 </nav>
 
@@ -42,24 +40,16 @@ export const Header = () => {
                     zIndex: -2
                 }}>
                     {RouterLinks.map((ele, index) => (
-                        <Btn key={index} color="text-gray-800 hover:text-black transition-all w-full">
-                            <Link to={ele.RouterPath} className="block w-full text-left" aria-label={ele.RouterText}>
-                                {ele.RouterText}
-                            </Link>
-                        </Btn>
+                        <Link to={ele.RouterPath} key={index} className="block w-full text-left" aria-label={ele.RouterText}>
+                            <Btn children={ele.RouterText} color="text-gray-800 hover:text-black transition-all w-full" />
+                        </Link>
                     ))}
                 </nav>
 
                 <div className="flex items-center gap-2">
-                    <Btn ref={BtnRef} color="md:hidden" func={() => setOpen(!open)}>
-                        <img src={assets.menu_icon} alt="menu-icon" />
-                    </Btn>
-                    <Btn color="">
-                        <img src={assets.search_icon} alt="search-icon" />
-                    </Btn>
-                    <Btn color="">
-                        <img src={assets.user_icon} alt="user-icon" />
-                    </Btn>
+                    <Btn children={<img src={HEADER_IMAGE.menu} />} aria-lable="menu icon to open and close menu" color="md:hidden" func={() => setOpen(!open)} ref={BtnRef} />
+                    <Btn children={<img src={HEADER_IMAGE.search} alt="search-icon" />} aria-lable = 'search icon to search about product' color="" />
+                    <Btn children = {<img src={HEADER_IMAGE.user} alt="user-icon" />} aria-lable = 'sign in or register' color=""/>
                 </div>
             </div>
         </div>
