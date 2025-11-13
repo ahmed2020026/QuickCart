@@ -34,8 +34,8 @@ export const Product = () => {
                             {Products.price}
                         </p>
                         <div className="btns mt-5 grid grid-cols-2 gap-5 md:gap-10">
-                            <Btn children = 'Add to Cart' color='bg-gray-200 text-gray-700 md:py-2'/>
-                            <Btn children = 'Buy Now' color='bg-orange-500 text-white md:py-2'/>
+                            <Btn children = 'Add to Cart' color='bg-gray-200 text-gray-800 md:py-2'/>
+                            <Btn children = 'Buy Now' color='bg-orange-600 hover:bg-orange-700 text-white md:py-2'/>
                         </div>
                     </div>
                 </div>

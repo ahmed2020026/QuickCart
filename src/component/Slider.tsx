@@ -36,15 +36,15 @@ export const SliderComponent = ({ items }: SliderProps) => {
                         <div className="p-5 bg-gray-100 rounded-lg flex" key={index}>
                             <div className="parent grid grid-cols-1 md:grid-cols-3 md:min-h-72">
                                 <div className="md:col-span-2 lg:pr-50 order-2 md:order-1">
-                                    <p className="text-base text-orange-500 mt-10">{item.head}</p>
-                                    <h2 className="max-w-lg md:text-[40px] md:leading-[48px] pr-2 text-2xl font-semibold text-gray-600">{item.disc}</h2>
+                                    <p className="text-base text-orange-600 mt-10">{item.head}</p>
+                                    <h2 className="max-w-lg md:text-[40px] md:leading-[48px] pr-2 text-2xl font-semibold text-gray-800">{item.disc}</h2>
                                     <div className="btns flex gap-2 mt-5">
-                                        <Btn children={item.foot.text} color="bg-orange-500 hover:bg-orange-600 transition-all text-white font-medium" />
+                                        <Btn children={item.foot.text} color="bg-orange-600 hover:bg-orange-700 transition-all text-white font-medium" />
                                         <Btn children={item.foot.detail} color="font-medium bg-gray-200 md:bg-transparent transition-all hover:bg-gray-200" />
                                     </div>
                                 </div>
                                 <div className="md:col-span-1 text-center flex justify-between order-1 md:order-2 items-center h-[250px] md:h-auto">
-                                    <img src={item.image} alt={item.head} height={747} width={654} className="block m-auto md:w-72 w-48 md:h-60" />
+                                    <img src={item.image} alt={item.head} loading="lazy" onLoad={(e) => e.currentTarget.classList.remove('blur-sm')} height={747} width={654} className="block m-auto md:w-72 w-48 md:h-60" />
                                 </div>
                             </div>
                         </div>
