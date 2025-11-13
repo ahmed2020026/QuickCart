@@ -3,6 +3,7 @@ import { Rate } from "./Rate"
 import { Link } from "react-router-dom"
 
 export const Cart = ({ product }: { product: product }) => {
+    const scrollTop = () => window.scrollTo({"top":0});
     return (
         <div className="relative group">
             <div className="cart-image mb-2 bg-gray-100 flex justify-center items-center rounded-lg overflow-hidden">
@@ -19,7 +20,7 @@ export const Cart = ({ product }: { product: product }) => {
             <div className="cart-foot flex justify-between items-center">
                 <span className="font-medium text-gray-800">{product.price}</span>
             </div>
-            <Link to={`${product.id}`} aria-label='path Icon' className="absolute block top-0 left-0 w-full h-full"></Link>
+            <Link to={`/all-products/${product.id}`} onClick={scrollTop} aria-label='path Icon' className="absolute block top-0 left-0 w-full h-full"></Link>
         </div>
     )
 }
