@@ -5,12 +5,18 @@ import { Title } from "../component/Title"
 import type { product } from "../assets/SYSTEM/productData"
 import { Button, Input } from "@headlessui/react"
 import { Cart } from "../component/Cart"
-import { Link } from "react-router-dom"
 import { Feature } from "../component/Feature"
 import { Btn } from "../component/Btn"
+import { useNavigate } from "react-router-dom"
 export const Home = () => {
     const Products = useSelector((state: any) => state.product.list);
-    const scrollTop = () => window.scrollTo({ "top": 0 });
+    const navigate = useNavigate();
+
+    const scrollTop = () => {
+        navigate('/all-products');
+        window.scrollTo({ top: 0});
+    };
+
     return (
         <>
             <section>
@@ -33,15 +39,13 @@ export const Home = () => {
                         }
                     </div>
                     <div className="flex items-center justify-center py-5">
-                        <Link to={'/all-products'} className="rounded-md">
-                            <Button tabIndex={-1}
-                                aria-hidden="true"
+                            <Button
+                                aria-label="See More product"
                                 type = 'button'
                                 onClick={scrollTop}
                                 className={`inline-flex items-center border font-medium border-gray-500 text-gray-500 gap-2 rounded-md px-5 text-base py-1.5 shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`} >
                                 see more
                             </Button>
-                        </Link>
                     </div>
                 </div>
             </section>

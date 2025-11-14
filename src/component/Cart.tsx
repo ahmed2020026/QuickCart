@@ -27,7 +27,7 @@ export const Cart = ({ product }: { product: product }) => {
             <div className="cart-foot flex justify-between items-center">
                 <span className="font-medium text-gray-800">{product.price}</span>
             </div>
-            <Link to={`/all-products/${product.id}`} onClick={scrollTop} aria-label='View details of product' className="absolute block top-0 left-0 w-full h-full"></Link>
+            <Link to={`/all-products/${product.id}`} onClick={scrollTop} aria-label={`view details of ${product.name}`} className="absolute block top-0 left-0 w-full h-full"></Link>
         </div>
     )
 }

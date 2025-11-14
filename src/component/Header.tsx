@@ -4,6 +4,7 @@ import { Btn } from "./Btn";
 import { useState, useRef } from "react";
 import { useOutClick } from "../hooks/useOutClick";
 import { useGetHeight } from "../hooks/useGetHeight";
+import { RouteLink } from "./RouteLink";
 
 export const Header = () => {
     const [open, setOpen] = useState(false);
@@ -27,10 +28,8 @@ export const Header = () => {
 
                 {/* routes in large screen */}
                 <nav className="hidden md:block pr-5 relative">
-                    {RouterLinks.map((ele, index) => (
-                        <Link to={ele.RouterPath} key={index}>
-                            <Btn children={ele.RouterText} color="text-gray-600 hover:text-black transition-all" />
-                        </Link>
+                    {RouterLinks.map((ele , index) => (
+                        <RouteLink key={index} text={ele.RouterText} path={ele.RouterPath} color="text-gray-700 hover:text-black transition-all" />
                     ))}
                 </nav>
 
@@ -47,9 +46,9 @@ export const Header = () => {
                 </nav>
 
                 <div className="flex items-center gap-2">
-                    <Btn children={<img src={HEADER_IMAGE.menu} alt="menu-icon" />} aria-lable="menu icon to open and close menu" color="md:hidden" func={() => setOpen(!open)} ref={BtnRef} />
-                    <Btn children={<img src={HEADER_IMAGE.search} alt="search-icon" />} aria-lable = 'search icon to search about product' color="" />
-                    <Btn children = {<img src={HEADER_IMAGE.user} alt="user-icon" />} aria-lable = 'sign in or register' color=""/>
+                    <Btn children={<img src={HEADER_IMAGE.menu} alt="menu-icon" />} aria-label="menu icon to open and close menu" color="md:hidden" func={() => setOpen(!open)} ref={BtnRef} />
+                    <Btn children={<img src={HEADER_IMAGE.search} alt="search-icon" />} aria-label = 'search icon to search about product' color="" />
+                    <Btn children = {<img src={HEADER_IMAGE.user} alt="user-icon" />} aria-label = 'sign in or register' color=""/>
                 </div>
             </div>
         </div>
