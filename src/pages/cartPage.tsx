@@ -8,8 +8,8 @@ import { Btn } from "../component/Btn";
 
 
 export const CartPage = () => {
-    const [items, setItem] = useState<number>(0);
-    setItem(10)
+    const [items, ] = useState<number>(0);
+    
     return (
         <section style={{ minHeight: 'calc(100vh - 75px)' }} className="mt-5 mb-10">
             <div className="container">

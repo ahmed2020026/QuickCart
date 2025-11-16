@@ -44,7 +44,7 @@ export const Header = () => {
                     zIndex: -2
                 }}>
                     <div className="flex justify-between">
-                        <Btn children={<img src={HEADER_IMAGE.cart} alt="search-icon" />} aria-label='search icon to search about product' color="inline-flex" />
+                        <Btn children={<img src={HEADER_IMAGE.cart} alt="cart-icon" />} aria-label='cart icon to collection of product' color="inline-flex" func={() => GoTo('/cart')} />
                         <Btn children={<img src={HEADER_IMAGE.user} alt="user-icon" />} aria-label='sign in or register' color="inline-flex" />
                     </div>
                     {RouterLinks.map((ele, index) => (
