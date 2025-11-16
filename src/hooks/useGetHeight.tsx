@@ -1,11 +1,23 @@
-import {useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-export const useGetHeight = (ele: React.RefObject<HTMLElement | null>) => {
-    const [height, setHeight] = useState<number>(0)
+export const useGetHeight = (
+    ele: React.RefObject<HTMLElement | null>,
+    active: boolean
+) => {
+    const [height, setHeight] = useState<number>(0);
+
     useEffect(() => {
-        if (ele.current) {
-            setHeight(ele.current.scrollHeight);
+        if (active && ele.current) {
+            // إعادة الحساب بعد render فعلي
+            const fullHeight = ele.current.scrollHeight;
+            setHeight(fullHeight);
         }
-    }, [ele])
-    return height
-}
+
+        // لو اتقفل خليه صفر
+        if (!active) {
+            setHeight(0);
+        }
+    }, [active, ele]);
+
+    return height;
+};
