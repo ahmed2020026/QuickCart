@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 .container {
-    @apply mx-auto p-2 px-4
+    @apply mx-auto p-2 px-4 relative
 }
 
 .features div.child {
@@ -14,7 +14,7 @@
         top: 0;
         bottom: -50px;
         left: 0;
-        background: linear-gradient(to top, #000 , #0000002a);
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.753) , rgba(0, 0, 0, 0.165));
         opacity: 0;
         transition: 0.3s;
     }
@@ -26,5 +26,14 @@
     }
     .info{
         bottom: 25px;
+    }
+}
+
+.table-content{
+    max-width: 100%;
+    overflow:hidden;
+    div{
+        width: 1000px;
+        background-color: aqua;
     }
 }

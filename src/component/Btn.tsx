@@ -7,9 +7,9 @@ type BtnProps = {
     func?: () => void;
 };
 
-export const Btn = React.forwardRef<HTMLButtonElement, BtnProps>(({ color = "bg-blue-700 hover:bg-blue-600 text-white", children, func = () => { }, ...rest }, ref) => {
+export const Btn = React.forwardRef<HTMLButtonElement, BtnProps>(({ color = "bg-blue-700 hover:bg-blue-600 text-white inline-flex", children, func = () => { }, ...rest }, ref , click = null) => {
     return (
-        <Button type="button" ref={ref} {...rest} onClick={func} className={`inline-flex items-center gap-2 rounded-md ${color} px-3 text-base py-1.5 shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
+        <Button type="button" ref={ref} {...rest} onClick={func} className={`items-center gap-2 rounded-md ${color} px-3 text-base py-1.5 shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
             {children}
         </Button>
     );

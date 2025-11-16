@@ -4,5 +4,5 @@ type IconProps = {
 }
 
 export const Icon = ({ icon: IconComponent, className }: IconProps) => {
-    return <IconComponent className={`w-6 h-6 ${className}`} />
+    return <IconComponent className={`w-5 h-5 ${className}`} />
 }

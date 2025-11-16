@@ -5,6 +5,7 @@ import { Footer } from "./component/Footer"
 import { Product } from "./pages/Product"
 import { AllProducts } from "./pages/AllProducts"
 import { NotFound } from "./pages/NotFound"
+import { CartPage } from "./pages/cartPage"
 
 
 export const App = () => {
@@ -19,6 +20,7 @@ export const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/all-products" element={<AllProducts />} />
           <Route path="/all-products/:id" element={<Product/>} />
+          <Route path="/cart" element={<CartPage/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

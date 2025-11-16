@@ -103,7 +103,7 @@ export const HEADER_IMAGE = {
   search: assets.search_icon,
   menu: assets.menu_icon,
   cart:assets.cart_icon,
-  user:assets.user_icon
+  user:assets.user_icon,
 };
 
 export const Image = {

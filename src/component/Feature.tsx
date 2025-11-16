@@ -20,7 +20,7 @@ export const Feature = ({ feature }: { feature:FeatureType }) => {
             <div className="info duration-300 absolute w-full bottom-0 left-0 p-3 text-white">
                 <h3 className="font-bold text-2xl">{feature.header}</h3>
                 <p className="text-base my-3">{feature.disc}</p>
-                <Btn children='Buy Now' color="bg-orange-600 hover:bg-orange-700" />
+                <Btn children='Buy Now' color="bg-orange-600 hover:bg-orange-700 inline-flex" />
             </div>
         </div>
     )
