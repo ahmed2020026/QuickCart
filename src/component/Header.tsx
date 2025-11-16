@@ -44,6 +44,13 @@ export const Header = () => {
                     height: open ? `${height}px` : "0px",
                     zIndex: -2
                 }}>
+                    <div>
+                        {RouterLinks.map((ele, index) => (
+                            <Link to={ele.RouterPath} key={index} className="block w-full text-left" aria-label={ele.RouterText}>
+                                <Btn children={ele.RouterText} color="text-gray-800 hover:text-black transition-all w-full inline-flex" />
+                            </Link>
+                        ))}
+                    </div>
                     <div className="flex justify-between">
                         <Button aria-label='cart icon to collection of product' className="inline-flex items-center gap-2 rounded-md  px-3 text-base py-1.5 shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white" onClick={() => GoTo('/cart')}>
                             <img src={HEADER_IMAGE.cart} alt="cart-icon" />
@@ -51,13 +58,6 @@ export const Header = () => {
                         <Button aria-label='sign in or register' className="inline-flex items-center gap-2 rounded-md  px-3 text-base py-1.5 shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white" onClick={() => GoTo('/cart')}>
                             <img src={HEADER_IMAGE.user} alt="user-icon" />
                         </Button>
-                    </div>
-                    <div>
-                        {RouterLinks.map((ele, index) => (
-                            <Link to={ele.RouterPath} key={index} className="block w-full text-left" aria-label={ele.RouterText}>
-                                <Btn children={ele.RouterText} color="text-gray-800 hover:text-black transition-all w-full inline-flex" />
-                            </Link>
-                        ))}
                     </div>
                 </nav>
 
