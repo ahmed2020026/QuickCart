@@ -2,7 +2,7 @@ import { ArrowLeftCircleIcon } from "@heroicons/react/16/solid"
 import { Link } from "react-router-dom"
 
 
-export const NotFound = () => {
+const NotFound = () => {
     return (
         <section>
             <div className="container">
@@ -24,3 +24,4 @@ export const NotFound = () => {
         </section>
     )
 }
+export default NotFound;

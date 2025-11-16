@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom"
 import { Rate } from "../component/Rate";
 import { Btn } from "../component/Btn";
 
-export const Product = () => {
+const Product = () => {
     const { id } = useParams<{ id: string }>();
     const Products = useSelector((state: any) => state.product.list.find((pID: any) => pID.id == Number(id)))
 
@@ -43,3 +43,5 @@ export const Product = () => {
         </section>
     )
 }
+
+export default Product;

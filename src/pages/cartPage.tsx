@@ -7,7 +7,7 @@ import { MinusIcon, PlusIcon } from "@heroicons/react/16/solid";
 import { Btn } from "../component/Btn";
 
 
-export const CartPage = () => {
+const CartPage = () => {
     const [items, ] = useState<number>(0);
     
     return (
@@ -135,3 +135,4 @@ export const CartPage = () => {
         </section>
     )
 }
+export default CartPage;

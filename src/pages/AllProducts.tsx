@@ -2,7 +2,7 @@ import { useSelector } from "react-redux";
 import { Cart } from "../component/Cart";
 import type { product } from "../assets/SYSTEM/productData"
 
-export const AllProducts = () => {
+const AllProducts = () => {
     const Products = useSelector((state: any) => state.product.list)
 
     return (
@@ -21,3 +21,4 @@ export const AllProducts = () => {
         </section>
     );
 };
+export default AllProducts;
