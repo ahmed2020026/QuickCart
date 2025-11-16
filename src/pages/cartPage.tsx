@@ -100,11 +100,11 @@ const CartPage = () => {
                             <form>
                                 <div className="mb-3">
                                     <label htmlFor="address" className="text-gray-800 block mb-2 lowercase">Address</label>
-                                    <Input name="address" aria-label="Enter your address" placeholder="Enter your Address" type="text" className='data-hover:shadow block w-full rounded-lg border outline-0 border-gray-400 bg-white px-3 py-2 text-sm/6 ' />
+                                    <Input name="address" id="address" autoComplete="off" aria-label="Enter your address" placeholder="Enter your Address" type="text" className='data-hover:shadow block w-full rounded-lg border outline-0 border-gray-400 bg-white px-3 py-2 text-sm/6 ' />
                                 </div>
                                 <div className="mb-3">
                                     <label htmlFor="Code" className="text-gray-800 block mb-2 lowercase">Promo Code</label>
-                                    <Input name="Code" aria-label="Enter your Code" placeholder="Enter Promo Code" type="text" className='data-hover:shadow block w-full rounded-lg border outline-0 border-gray-400 bg-white px-3 py-2 text-sm/6 ' />
+                                    <Input name="Code" id = "Code" autoComplete="off" aria-label="Enter your Code" placeholder="Enter Promo Code" type="text" className='data-hover:shadow block w-full rounded-lg border outline-0 border-gray-400 bg-white px-3 py-2 text-sm/6 ' />
                                 </div>
                                 <Btn children='Apply' color="bg-orange-600 px-6 hover:bg-orange-700 text-white border border-orange-500 inline-flex" />
                             </form>

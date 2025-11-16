@@ -43,15 +43,17 @@ export const Header = () => {
                     height: open ? `${height}px` : "0px",
                     zIndex: -2
                 }}>
-                    <div className="flex justify-between">
-                        <Btn children={<img src={HEADER_IMAGE.cart} alt="cart-icon" />} aria-label='cart icon to collection of product' color="inline-flex" func={() => GoTo('/cart')} />
-                        <Btn children={<img src={HEADER_IMAGE.user} alt="user-icon" />} aria-label='sign in or register' color="inline-flex" />
+                    <div>
+                        <div className="flex justify-between">
+                            <Btn children={<img src={HEADER_IMAGE.cart} alt="cart-icon" />} aria-label='cart icon to collection of product' color="inline-flex" func={() => GoTo('/cart')} />
+                            <Btn children={<img src={HEADER_IMAGE.user} alt="user-icon" />} aria-label='sign in or register' color="inline-flex" />
+                        </div>
+                        {RouterLinks.map((ele, index) => (
+                            <Link to={ele.RouterPath} key={index} className="block w-full text-left" aria-label={ele.RouterText}>
+                                <Btn children={ele.RouterText} color="text-gray-800 hover:text-black transition-all w-full inline-flex" />
+                            </Link>
+                        ))}
                     </div>
-                    {RouterLinks.map((ele, index) => (
-                        <Link to={ele.RouterPath} key={index} className="block w-full text-left" aria-label={ele.RouterText}>
-                            <Btn children={ele.RouterText} color="text-gray-800 hover:text-black transition-all w-full inline-flex" />
-                        </Link>
-                    ))}
                 </nav>
 
                 <div className="flex items-center gap-2">
