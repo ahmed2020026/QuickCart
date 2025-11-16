@@ -5,6 +5,7 @@ import { useState, useRef } from "react";
 import { useOutClick } from "../hooks/useOutClick";
 import { useGetHeight } from "../hooks/useGetHeight";
 import { RouteLink } from "./RouteLink";
+import { Button } from "@headlessui/react";
 
 export const Header = () => {
     const [open, setOpen] = useState(false);
@@ -44,8 +45,12 @@ export const Header = () => {
                     zIndex: -2
                 }}>
                     <div className="flex justify-between">
-                        <Btn children={<img src={HEADER_IMAGE.cart} alt="cart-icon" />} aria-label='cart icon to collection of product' color="inline-flex" func={() => GoTo('/cart')} />
-                        <Btn children={<img src={HEADER_IMAGE.user} alt="user-icon" />} aria-label='sign in or register' color="inline-flex" />
+                        <Button aria-label='cart icon to collection of product' className="inline-flex items-center gap-2 rounded-md  px-3 text-base py-1.5 shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white" onClick={() => GoTo('/cart')}>
+                            <img src={HEADER_IMAGE.cart} alt="cart-icon" />
+                        </Button>
+                        <Button aria-label='sign in or register' className="inline-flex items-center gap-2 rounded-md  px-3 text-base py-1.5 shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white" onClick={() => GoTo('/cart')}>
+                            <img src={HEADER_IMAGE.user} alt="user-icon" />
+                        </Button>
                     </div>
                     <div>
                         {RouterLinks.map((ele, index) => (
