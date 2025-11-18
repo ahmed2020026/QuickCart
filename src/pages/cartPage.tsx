@@ -4,10 +4,11 @@ import { Icon } from "../component/Icon";
 import { MinusIcon, PlusIcon } from "@heroicons/react/16/solid";
 import { Btn } from "../component/Btn";
 import { OperationsCart } from "../hooks/Context";
+import { Rate } from "../component/Rate";
 
 const CartPage = () => {
     /* context Cart */
-    const {products,GetLength,increase,decrease} = OperationsCart();
+    const {products,GetLength,increase,decrease , deleteProduct ,deleteAllProducts , GetTotalPrice} = OperationsCart();
 
     return (
         <section style={{ minHeight: 'calc(100vh - 75px)' }} className="mt-5 mb-10">
@@ -41,7 +42,8 @@ const CartPage = () => {
                                                         <img src={product.product.imgSrc} width={90} height={'auto'} className="bg-gray-100 rounded-md p-2" alt={product.product.name} />
                                                         <div>
                                                             <h3 className="text-base text-gray-800 font-medium">{product.product.name}</h3>
-                                                            <Button type="button" aria-label="remove product from cart" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
+                                                            <div className="flex justify-between items-center"><Rate rate={product.product.rating} /> <small>{product.product.rating}</small></div>
+                                                            <Button type="button" aria-label="remove product from cart" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`} onClick={() => deleteProduct(product.product.id)}>
                                                                 <Icon icon={ArchiveBoxIcon} className="text-red-500" />
                                                             </Button>
                                                         </div>
@@ -65,6 +67,7 @@ const CartPage = () => {
                                     </tbody>
                                 </table>
                             </div>
+                            <Btn children={"Remove all"} aria-label = "remove all product" color="block bg-red-100 py-0 text-red-600 border border-red-300" func={() => deleteAllProducts()} />
                         </div>
                     </div>
                     <div className="p-3 px-5 rounded-lg bg-gray-100 mt-5 md:mt-0">
@@ -89,15 +92,15 @@ const CartPage = () => {
                                 <tbody>
                                     <tr>
                                         <td className="font-medium py-2 text-gray-600">Price</td>
-                                        <td className="text-right font-medium py-2 text-gray-800">0$</td>
+                                        <td className="text-right font-medium py-2 text-gray-800">{GetTotalPrice}$</td>
                                     </tr>
                                     <tr>
                                         <td className="font-medium py-2 pb-5 text-gray-600">Tax(2%)</td>
-                                        <td className="text-right font-medium py-2 pb-5 text-gray-800">0$</td>
+                                        <td className="text-right font-medium py-2 pb-5 text-gray-800">{(GetTotalPrice*0.02).toFixed(2)}$</td>
                                     </tr>
                                     <tr className="border-t border-t-gray-300">
                                         <td className="font-medium py-2 text-gray-800">Total</td>
-                                        <td className="text-right font-medium py-2 text-gray-800">0$</td>
+                                        <td className="text-right font-medium py-2 text-gray-800">{GetTotalPrice+(GetTotalPrice*0.02)}$</td>
                                     </tr>
                                 </tbody>
                             </table>

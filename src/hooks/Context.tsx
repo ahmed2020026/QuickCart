@@ -13,6 +13,9 @@ interface CartType {
     addToCart: (p: product) => void,
     increase: (id: number) => void,
     decrease: (id: number) => void,
+    deleteProduct: (id:number) => void,
+    deleteAllProducts:() => void,
+    GetTotalPrice: number,
     GetLength: number,
 }
 
@@ -97,6 +100,18 @@ export const ContextData = ({ children }: { children: React.ReactNode }) => {
         })
     }
 
+    /* delete product */
+    const deleteProduct = (id:number) => {
+        setProduct((prev) => {
+            return prev.filter(item => item.product.id !== id)
+        })
+    }
+
+    /* delete all Products */
+    const deleteAllProducts = () => {
+        setProduct([]);
+    }
+
     /* store Data into session */
     useEffect(() => {
         sessionStorage.setItem('Products', JSON.stringify(products));
@@ -107,7 +122,12 @@ export const ContextData = ({ children }: { children: React.ReactNode }) => {
         return products.reduce((sum, item) => sum + item.amount, 0);
     }, [products]);
 
-    return <Context.Provider value={{ products, addToCart, GetLength, increase, decrease }}>
+    /* Get total price */
+    const GetTotalPrice = useMemo(() => {
+        return products.reduce((sum, item) => sum + item.price, 0);
+    },[products])
+
+    return <Context.Provider value={{ products, addToCart, GetLength, increase, decrease , deleteProduct , deleteAllProducts ,GetTotalPrice}}>
         {children}
     </Context.Provider>
 }
