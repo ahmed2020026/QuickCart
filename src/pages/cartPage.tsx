@@ -5,11 +5,13 @@ import { ArchiveBoxIcon } from "@heroicons/react/24/solid";
 import { Icon } from "../component/Icon";
 import { MinusIcon, PlusIcon } from "@heroicons/react/16/solid";
 import { Btn } from "../component/Btn";
-
+import { OperationsCart } from "../hooks/Context";
 
 const CartPage = () => {
-    const [items, ] = useState<number>(0);
-    
+    const [quality,  ] = useState<number>(0);
+    /* context Cart */
+    const {products,GetLength} = OperationsCart();
+
     return (
         <section style={{ minHeight: 'calc(100vh - 75px)' }} className="mt-5 mb-10">
             <div className="container">
@@ -20,7 +22,7 @@ const CartPage = () => {
                                 Your <span className="text-orange-600">Cart</span>
                             </h2>
                             <h2 className="text-2xl text-gray-700 font-medium">
-                                {items} items
+                                {GetLength} items
                             </h2>
                         </div>
                         <div className="max-w-full overflow-x-auto">
@@ -35,58 +37,34 @@ const CartPage = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr className="">
-                                            <td className=" p-2">
-                                                <div className="flex items-center gap-2">
-                                                    <img src={img} width={90} height={'auto'} className="bg-gray-100 rounded-md p-2" alt="product" />
-                                                    <div>
-                                                        <h3 className="text-base text-gray-800 font-medium">Camera</h3>
-                                                        <Button type="button" aria-label="remove product from cart" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
-                                                            <Icon icon={ArchiveBoxIcon} className="text-red-500" />
+                                        {products.map((product,index) => (
+                                            <tr className="" key={index}>
+                                                <td className=" p-2">
+                                                    <div className="flex items-center gap-2">
+                                                        <img src={product.product.imgSrc} width={90} height={'auto'} className="bg-gray-100 rounded-md p-2" alt={product.product.name} />
+                                                        <div>
+                                                            <h3 className="text-base text-gray-800 font-medium">{product.product.name}</h3>
+                                                            <Button type="button" aria-label="remove product from cart" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
+                                                                <Icon icon={ArchiveBoxIcon} className="text-red-500" />
+                                                            </Button>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td className=" p-2 text-center">{product.product.price}</td>
+                                                <td className=" p-2">
+                                                    <div className="flex items-center justify-center">
+                                                        <Button type="button" aria-label="decrease quality of products" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
+                                                            <Icon icon={MinusIcon} />
+                                                        </Button>
+                                                        <span className="border border-gray-300 text-gray-600 px-2">{product.amount}</span>
+                                                        <Button type="button" aria-label="increase quality of products" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
+                                                            <Icon icon={PlusIcon} />
                                                         </Button>
                                                     </div>
-                                                </div>
-                                            </td>
-                                            <td className=" p-2 text-center">0$</td>
-                                            <td className=" p-2">
-                                                <div className="flex items-center justify-center">
-                                                    <Button type="button" aria-label="decrease quality of products" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
-                                                        <Icon icon={MinusIcon} />
-                                                    </Button>
-                                                    <span className="border border-gray-300 text-gray-600 px-2">0</span>
-                                                    <Button type="button" aria-label="increase quality of products" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
-                                                        <Icon icon={PlusIcon} />
-                                                    </Button>
-                                                </div>
-                                            </td>
-                                            <td className=" p-2 text-center">0$</td>
-                                        </tr>
-                                        <tr className="">
-                                            <td className=" p-2">
-                                                <div className="flex items-center gap-2">
-                                                    <img src={img} width={90} height={'auto'} className="bg-gray-100 rounded-md p-2" alt="product" />
-                                                    <div>
-                                                        <h3 className="text-base text-gray-800 font-medium">Camera</h3>
-                                                        <Button type="button" aria-label="remove product from cart" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
-                                                            <Icon icon={ArchiveBoxIcon} className="text-red-500" />
-                                                        </Button>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td className=" p-2 text-center">0$</td>
-                                            <td className=" p-2">
-                                                <div className="flex items-center justify-center">
-                                                    <Button type="button" aria-label="decrease quality of products" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
-                                                        <Icon icon={MinusIcon} />
-                                                    </Button>
-                                                    <span className="border border-gray-300 text-gray-600 px-2">0</span>
-                                                    <Button type="button" aria-label="increase quality of products" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
-                                                        <Icon icon={PlusIcon} />
-                                                    </Button>
-                                                </div>
-                                            </td>
-                                            <td className=" p-2 text-center">0$</td>
-                                        </tr>
+                                                </td>
+                                                <td className=" p-2 text-center">${product.price}</td>
+                                            </tr>
+                                        ))}
                                     </tbody>
                                 </table>
                             </div>

@@ -2,10 +2,15 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom"
 import { Rate } from "../component/Rate";
 import { Btn } from "../component/Btn";
+import { OperationsCart } from "../hooks/Context";
 
 const Product = () => {
     const { id } = useParams<{ id: string }>();
+    /* Get Product from redux store by id */
     const Products = useSelector((state: any) => state.product.list.find((pID: any) => pID.id == Number(id)))
+
+    /* Context Operations */
+    const { addToCart } = OperationsCart();
 
     return (
         <section className="mt-2 mb-10">
@@ -34,8 +39,8 @@ const Product = () => {
                             {Products.price}
                         </p>
                         <div className="btns mt-5 grid grid-cols-2 gap-5 md:gap-10">
-                            <Btn children = 'Add to Cart' color='bg-gray-200 text-gray-800 md:py-2 inline-flex'/>
-                            <Btn children = 'Buy Now' color='bg-orange-600 hover:bg-orange-700 text-white md:py-2 inline-flex'/>
+                            <Btn children='Add to Cart' aria-label='Add to cart' color='bg-gray-200 text-gray-800 md:py-2 inline-flex' func={() => addToCart(Products)} />
+                            <Btn children='Buy Now' aria-label='by now' color='bg-orange-600 hover:bg-orange-700 text-white md:py-2 inline-flex' />
                         </div>
                     </div>
                 </div>

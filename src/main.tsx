@@ -7,6 +7,7 @@ import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Store } from './redux/store';
 import { Provider } from 'react-redux';
+import { ContextData } from './hooks/Context';
 
 const rootElement = document.getElementById('root');
 if (!rootElement) {
@@ -15,8 +16,10 @@ if (!rootElement) {
 
 createRoot(rootElement).render(
   <Provider store={Store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ContextData>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ContextData>
   </Provider>
 )
