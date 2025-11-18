@@ -7,7 +7,7 @@ import { OperationsCart } from "../hooks/Context";
 
 const CartPage = () => {
     /* context Cart */
-    const {products,GetLength} = OperationsCart();
+    const {products,GetLength,increase,decrease} = OperationsCart();
 
     return (
         <section style={{ minHeight: 'calc(100vh - 75px)' }} className="mt-5 mb-10">
@@ -50,11 +50,11 @@ const CartPage = () => {
                                                 <td className=" p-2 text-center">{product.product.price}</td>
                                                 <td className=" p-2">
                                                     <div className="flex items-center justify-center">
-                                                        <Button type="button" aria-label="decrease quality of products" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
+                                                        <Button type="button" aria-label="decrease quality of products" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`} onClick = {() => decrease(product.product.id)}>
                                                             <Icon icon={MinusIcon} />
                                                         </Button>
                                                         <span className="border border-gray-300 text-gray-600 px-2">{product.amount}</span>
-                                                        <Button type="button" aria-label="increase quality of products" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`}>
+                                                        <Button type="button" aria-label="increase quality of products" className={`items-center gap-2 rounded-md px-1 py-1 text-red text-sm shadow-inner shadow-white/10 focus:not-data-focus:outline-none data-focus:outline transition-all cursor-pointer data-focus:outline-white`} onClick={() => increase(product.product.id)}>
                                                             <Icon icon={PlusIcon} />
                                                         </Button>
                                                     </div>
