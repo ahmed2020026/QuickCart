@@ -1,5 +1,4 @@
 import { useState } from "react"
-import img from './cannon_camera_image.png'
 import { Button, Input } from "@headlessui/react";
 import { ArchiveBoxIcon } from "@heroicons/react/24/solid";
 import { Icon } from "../component/Icon";
@@ -8,7 +7,6 @@ import { Btn } from "../component/Btn";
 import { OperationsCart } from "../hooks/Context";
 
 const CartPage = () => {
-    const [quality,  ] = useState<number>(0);
     /* context Cart */
     const {products,GetLength} = OperationsCart();
 
