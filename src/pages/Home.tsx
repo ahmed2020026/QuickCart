@@ -8,6 +8,9 @@ import { Cart } from "../component/Cart"
 import { Feature } from "../component/Feature"
 import { Btn } from "../component/Btn"
 import { useNavigate } from "react-router-dom"
+import { Fade } from "react-awesome-reveal"
+
+
 export const Home = () => {
     const Products = useSelector((state: any) => state.product.list);
     const navigate = useNavigate();
@@ -22,7 +25,9 @@ export const Home = () => {
             <section>
                 <div className="container">
                     <div className="mt-5">
-                        <Slider items={jumbtron} />
+                        <Fade duration={700} triggerOnce>
+                            <Slider items={jumbtron} />
+                        </Fade>
                     </div>
                 </div>
             </section>
@@ -63,39 +68,43 @@ export const Home = () => {
             </section>
             <section>
                 <div className="container">
-                    <div className="grid grid-cols-1 lg:grid-cols-3 bg-gray-100 rounded-md">
-                        <div className="pt-10 lg:pt-0">
-                            <img
-                                src={Image.jbl_soundbox_image}
-                                alt="jbl"
-                                className="w-[200px] h-[200px] lg:w-72 lg:h-72 block mx-auto"
-                                loading="lazy"
-                                onLoad={(e) => e.currentTarget.classList.remove('blur-sm')}
-                            />
+                    <Fade duration={700} triggerOnce>
+                        <div className="grid grid-cols-1 lg:grid-cols-3 bg-gray-100 rounded-md">
+                            <div className="pt-10 lg:pt-0">
+                                <img
+                                    src={Image.jbl_soundbox_image}
+                                    alt="jbl"
+                                    className="w-[200px] h-[200px] lg:w-72 lg:h-72 block mx-auto"
+                                    loading="lazy"
+                                    onLoad={(e) => e.currentTarget.classList.remove('blur-sm')}
+                                />
+                            </div>
+                            <div className="text-center lg:my-0 p-3 flex flex-col items-center justify-center">
+                                <h2 className="mt-10 text-2xl lg:text-4xl font-bold text-gray-800">Level Up Your Gaming Experience</h2>
+                                <p className="my-3 text-gray-500">From immersive sound to precise controls—everything you need to win</p>
+                                <Btn children="Buy Now" color="bg-orange-600 hover:bg-orange-700 text-white px-10 py-2 inline-flex" />
+                            </div>
+                            <div className="flex justify-end pt-10 lg:pt-0">
+                                <img src={Image.md_controller_image} alt="md" className="lg:w-72 lg:h-72 block" />
+                            </div>
                         </div>
-                        <div className="text-center lg:my-0 p-3 flex flex-col items-center justify-center">
-                            <h2 className="mt-10 text-2xl lg:text-4xl font-bold text-gray-800">Level Up Your Gaming Experience</h2>
-                            <p className="my-3 text-gray-500">From immersive sound to precise controls—everything you need to win</p>
-                            <Btn children="Buy Now" color="bg-orange-600 hover:bg-orange-700 text-white px-10 py-2 inline-flex" />
-                        </div>
-                        <div className="flex justify-end pt-10 lg:pt-0">
-                            <img src={Image.md_controller_image} alt="md" className="lg:w-72 lg:h-72 block" />
-                        </div>
-                    </div>
+                    </Fade>
                 </div>
             </section>
             <section>
                 <div className="container">
-                    <div className="py-5">
-                        <div className="text-center py-5">
-                            <h2 className="text-xl lg:text-4xl md:text-2xl font-bold text-gray-800">Subscribe now & get 20% off</h2>
-                            <p className="mb-5 text-gray-500">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <Fade duration={700} triggerOnce>
+                        <div className="py-5">
+                            <div className="text-center py-5">
+                                <h2 className="text-xl lg:text-4xl md:text-2xl font-bold text-gray-800">Subscribe now & get 20% off</h2>
+                                <p className="mb-5 text-gray-500">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                            </div>
+                            <div className="md:w-xl lg:w-2xl mx-auto flex items-center">
+                                <Input name="full_name" aria-label="Enter your email" placeholder="Enter your email" type="text" className='data-hover:shadow block w-full rounded-lg rounded-e-none border outline-0 border-gray-400 bg-white/5 px-3 py-2 text-sm/6 ' />
+                                <Btn children='Subscribe' color="bg-orange-600 hover:bg-orange-700 text-white py-2 rounded-s-none border border-orange-500 inline-flex" />
+                            </div>
                         </div>
-                        <div className="md:w-xl lg:w-2xl mx-auto flex items-center">
-                            <Input name="full_name" aria-label="Enter your email" placeholder="Enter your email" type="text" className='data-hover:shadow block w-full rounded-lg rounded-e-none border outline-0 border-gray-400 bg-white/5 px-3 py-2 text-sm/6 ' />
-                            <Btn children='Subscribe' color="bg-orange-600 hover:bg-orange-700 text-white py-2 rounded-s-none border border-orange-500 inline-flex" />
-                        </div>
-                    </div>
+                    </Fade>
                 </div>
             </section>
         </>

@@ -6,8 +6,10 @@ import { useOutClick } from "../hooks/useOutClick";
 import { useGetHeight } from "../hooks/useGetHeight";
 import { RouteLink } from "./RouteLink";
 import { Button } from "@headlessui/react";
+import { OperationsCart } from "../hooks/Context";
 
 export const Header = () => {
+    const {GetLength} = OperationsCart();
     const [open, setOpen] = useState(false);
     const BtnRef = useRef<HTMLButtonElement>(null);
     const menuRef = useRef<HTMLElement>(null);
@@ -64,7 +66,15 @@ export const Header = () => {
                 <div className="flex items-center gap-2">
                     <Btn children={<img src={HEADER_IMAGE.menu} alt="menu-icon" />} aria-label="menu icon to open and close menu" color="md:hidden inline-flex" func={() => setOpen(!open)} ref={BtnRef} />
                     <Btn children={<img src={HEADER_IMAGE.search} alt="search-icon" />} aria-label='search icon to search about product' color="inline-flex" />
-                    <Btn children={<img src={HEADER_IMAGE.cart} alt="cart-icon" />} aria-label='cart icon to access cart product' color="hidden md:inline-flex" func = {() => GoTo('/cart')} />
+                    <div className="relative hidden md:inline-flex">
+                        <Btn children={<img src={HEADER_IMAGE.cart} alt="cart-icon" />} aria-label='cart icon to access cart product' color="hidden md:inline-flex" func={() => GoTo('/cart')}/>
+
+                        {GetLength > 0 && (
+                            <span className="absolute -top-2 -right-0 bg-red-600 text-white w-4 h-4 flex items-center justify-center rounded-full text-xs">
+                                {GetLength}
+                            </span>
+                        )}
+                    </div>
                     <Btn children={<img src={HEADER_IMAGE.user} alt="user-icon" />} aria-label='sign in or register' color="hidden md:inline-flex" />
                 </div>
             </div>

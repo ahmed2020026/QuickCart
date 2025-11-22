@@ -2,10 +2,6 @@ import { Route, Routes } from "react-router-dom"
 import { Header } from "./component/Header"
 import { Home } from "./pages/Home"
 import { Footer } from "./component/Footer"
-//import { Product } from "./pages/Product"
-//import { AllProducts } from "./pages/AllProducts"
-//import { NotFound } from "./pages/NotFound"
-//import { CartPage } from "./pages/cartPage"
 import { lazy, Suspense } from "react"
 import { Spinner } from "./component/Spinner"
 
@@ -13,6 +9,7 @@ const AllProducts = lazy(() => import("./pages/AllProducts"));
 const Product = lazy(() => import("./pages/Product"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const CartPage = lazy(() => import("./pages/cartPage"));
+
 
 export const App = () => {
 
