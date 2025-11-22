@@ -4,6 +4,7 @@ import { Home } from "./pages/Home"
 import { Footer } from "./component/Footer"
 import { lazy, Suspense } from "react"
 import { Spinner } from "./component/Spinner"
+import { Toaster } from "sonner"
 
 const AllProducts = lazy(() => import("./pages/AllProducts"));
 const Product = lazy(() => import("./pages/Product"));
@@ -15,6 +16,7 @@ export const App = () => {
 
   return (
     <>
+      <Toaster richColors />
       <header className="shadow-md relative bg-white" style={{ zIndex: 1200 }}>
         <Header />
       </header>

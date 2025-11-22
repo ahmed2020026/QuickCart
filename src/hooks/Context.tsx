@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import type { product } from "../assets/SYSTEM/productData";
+import { toast } from "sonner";
 
 interface itemType {
     amount: number,
@@ -33,26 +34,26 @@ export const ContextData = ({ children }: { children: React.ReactNode }) => {
     /* add to cart */
     const addToCart = (newProduct: product) => {
         setProduct((prev) => {
-            let amount: number = 1;
             const exist = prev.find(item => item.product.id === newProduct.id);
 
             if (exist) {
-                amount = exist.amount;
-                amount++;
-                return prev.map(item =>
-                    item.product.id === newProduct.id
-                        ? { ...item, amount: amount, price: Math.round(parseFloat(newProduct.price.replace(/[^0-9.]/g, ""))) * amount }
-                        : item
-                );
+                toast.warning("This item is already in your cart.");
+                return prev; 
+            } else {
+                toast.success("Item added successfully!"); 
+                const amount = 1;
+                return [
+                    ...prev,
+                    {
+                        product: newProduct,
+                        amount: amount,
+                        price: Math.round(parseFloat(newProduct.price.replace(/[^0-9.]/g, "")))
+                    }
+                ];
             }
-
-            return [...prev, {
-                product: newProduct,
-                amount: amount,
-                price: Math.round(parseFloat(newProduct.price.replace(/[^0-9.]/g, "")))
-            }];
-        })
+        });
     }
+
 
     /* increase amount of product */
     const increase = (id: number) => {
@@ -105,11 +106,13 @@ export const ContextData = ({ children }: { children: React.ReactNode }) => {
         setProduct((prev) => {
             return prev.filter(item => item.product.id !== id)
         })
+        toast.info("Item removed from cart");
     }
 
     /* delete all Products */
     const deleteAllProducts = () => {
         setProduct([]);
+        toast.info("all Items removed from cart");
     }
 
     /* store Data into session */

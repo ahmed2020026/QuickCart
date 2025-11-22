@@ -6,6 +6,7 @@ import { Btn } from "../component/Btn";
 import { OperationsCart } from "../hooks/Context";
 import { Rate } from "../component/Rate";
 import { Fade } from "react-awesome-reveal";
+import { EmptyCart } from "./EmptyCart";
 
 const CartPage = () => {
     /* context Cart */
@@ -25,79 +26,84 @@ const CartPage = () => {
                             </h2>
                         </div>
                         <div className="flex flex-col gap-4">
+                            {products.length > 0 ? (
+                                <>
+                                    {products.map((item, index) => (
+                                        <div
+                                            key={index}
+                                            className="flex flex-col lg:flex-row items-center justify-between bg-white shadow-md rounded-xl p-4 border border-gray-200"
+                                        >
+                                            {/* Product Info */}
+                                            <Fade duration={700} triggerOnce delay={index * 100}>
+                                                <div className="flex items-center gap-4 w-full">
+                                                    <img
+                                                        src={item.product.imgSrc}
+                                                        className="w-24 h-24 object-contain bg-gray-100 rounded-lg p-2"
+                                                        alt={item.product.name}
+                                                    />
 
-                            {products.map((item, index) => (
-                                <div key={index} className="flex flex-col lg:flex-row items-center justify-between bg-white shadow-md rounded-xl p-4 border border-gray-200">
-                                    {/* Product Info */}
-                                    <Fade duration={700} triggerOnce delay={index*100}>
-                                        <div className="flex items-center gap-4 w-full">
-                                            <img
-                                                src={item.product.imgSrc}
-                                                className="w-24 h-24 object-contain bg-gray-100 rounded-lg p-2"
-                                                alt={item.product.name}
-                                            />
+                                                    <div className="flex flex-col gap-1">
+                                                        <h3 className="text-lg font-semibold text-gray-800">{item.product.name}</h3>
+                                                        <div className="flex items-center gap-2">
+                                                            <Rate rate={item.product.rating} />
+                                                            <small className="text-gray-500">{item.product.rating}</small>
+                                                        </div>
 
-                                            <div className="flex flex-col gap-1">
-                                                <h3 className="text-lg font-semibold text-gray-800">{item.product.name}</h3>
-                                                <div className="flex items-center gap-2">
-                                                    <Rate rate={item.product.rating} />
-                                                    <small className="text-gray-500">{item.product.rating}</small>
+                                                        <Button
+                                                            onClick={() => deleteProduct(item.product.id)}
+                                                            className="text-red-500 cursor-pointer flex items-center gap-1 hover:underline"
+                                                        >
+                                                            <Icon icon={ArchiveBoxIcon} /> Remove
+                                                        </Button>
+                                                    </div>
                                                 </div>
 
-                                                <Button
-                                                    onClick={() => deleteProduct(item.product.id)}
-                                                    className="text-red-500 cursor-pointer flex items-center gap-1 hover:underline"
-                                                >
-                                                    <Icon icon={ArchiveBoxIcon} /> Remove
-                                                </Button>
-                                            </div>
+                                                {/* Right Side Controls */}
+                                                <div className="flex flex-col items-center mt-5 lg:mt-0 sm:items-end gap-3 sm:flex-row lg:flex-col sm:justify-between w-full">
+                                                    {/* Price */}
+                                                    <span className="text-xl font-semibold text-gray-600">{item.product.price}</span>
+
+                                                    {/* Quantity Controls */}
+                                                    <div className="flex items-center gap-2">
+                                                        <Button
+                                                            onClick={() => decrease(item.product.id)}
+                                                            className="p-1 cursor-pointer rounded-md border border-gray-300"
+                                                        >
+                                                            <Icon icon={MinusIcon} />
+                                                        </Button>
+
+                                                        <span className="px-3 py-0.5 border border-gray-300 rounded-md text-gray-600">
+                                                            {item.amount}
+                                                        </span>
+
+                                                        <Button
+                                                            onClick={() => increase(item.product.id)}
+                                                            className="p-1 cursor-pointer rounded-md border border-gray-300"
+                                                        >
+                                                            <Icon icon={PlusIcon} />
+                                                        </Button>
+                                                    </div>
+
+                                                    {/* Total */}
+                                                    <span className="text-gray-800 font-medium text-lg">Total: ${item.price}</span>
+                                                </div>
+                                            </Fade>
                                         </div>
+                                    ))}
 
-                                        {/* Right Side Controls */}
-                                        <div className="flex flex-col items-center mt-5 lg:mt-0 sm:items-end gap-3 sm:flex-row lg:flex-col  sm:justify-between  w-full">
-
-                                            {/* Price */}
-                                            <span className="text-xl font-semibold text-gray-600">
-                                                {item.product.price}
-                                            </span>
-
-                                            {/* Quantity Controls */}
-                                            <div className="flex items-center gap-2">
-                                                <Button
-                                                    onClick={() => decrease(item.product.id)}
-                                                    className="p-1 cursor-pointer rounded-md border border-gray-300"
-                                                >
-                                                    <Icon icon={MinusIcon} />
-                                                </Button>
-
-                                                <span className="px-3 py-0.5 border border-gray-300 rounded-md text-gray-600">
-                                                    {item.amount}
-                                                </span>
-
-                                                <Button
-                                                    onClick={() => increase(item.product.id)}
-                                                    className="p-1 cursor-pointer rounded-md border border-gray-300"
-                                                >
-                                                    <Icon icon={PlusIcon} />
-                                                </Button>
-                                            </div>
-
-                                            {/* Total */}
-                                            <span className="text-gray-800 font-medium text-lg">
-                                                Total: ${item.price}
-                                            </span>
-                                        </div>
-                                    </Fade>
-                                </div>
-                            ))}
-
-                            {products.length > 0 && <Btn
-                                children={"Remove all"}
-                                aria-label="remove all product"
-                                color="block bg-red-100 text-red-600 border border-red-300 py-1"
-                                func={() => deleteAllProducts()}
-                            />}
+                                    {/* Remove All Button */}
+                                    <Btn
+                                        children={"Remove all"}
+                                        aria-label="remove all product"
+                                        color="block bg-red-100 text-red-600 border border-red-300 py-1"
+                                        func={() => deleteAllProducts()}
+                                    />
+                                </>
+                            ) : (
+                                <EmptyCart />
+                            )}
                         </div>
+
                     </div>
                     <Fade duration={700} triggerOnce>
                         <div className="p-3 px-5 rounded-lg bg-gray-100 mt-5 md:mt-0">

@@ -2,6 +2,7 @@ import { createRoot } from 'react-dom/client'
 import { App } from './App';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+
 import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Store } from './redux/store';
