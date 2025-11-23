@@ -10,7 +10,7 @@ import { EmptyCart } from "./EmptyCart";
 
 const CartPage = () => {
     /* context Cart */
-    const {products,GetLength,increase,decrease , deleteProduct ,deleteAllProducts , GetTotalPrice} = OperationsCart();
+    const { products, GetLength, increase, decrease, deleteProduct, deleteAllProducts, GetTotalPrice } = OperationsCart();
 
     return (
         <section style={{ minHeight: 'calc(100vh - 75px)' }} className="mt-5 mb-10">
@@ -29,63 +29,69 @@ const CartPage = () => {
                             {products.length > 0 ? (
                                 <>
                                     {products.map((item, index) => (
-                                        <div
-                                            key={index}
-                                            className="flex flex-col lg:flex-row items-center justify-between bg-white shadow-md rounded-xl p-4 border border-gray-200"
-                                        >
-                                            {/* Product Info */}
+                                        <div key={index}>
                                             <Fade duration={700} triggerOnce delay={index * 100}>
-                                                <div className="flex items-center gap-4 w-full">
-                                                    <img
-                                                        src={item.product.imgSrc}
-                                                        className="w-24 h-24 object-contain bg-gray-100 rounded-lg p-2"
-                                                        alt={item.product.name}
-                                                    />
+                                                <div
+                                                    className="flex flex-col lg:flex-row items-center justify-between bg-white shadow-md rounded-xl p-4 border border-gray-200"
+                                                >
+                                                    {/* Product Info */}
 
-                                                    <div className="flex flex-col gap-1">
-                                                        <h3 className="text-lg font-semibold text-gray-800">{item.product.name}</h3>
+                                                    <div className="flex items-center grow gap-4 w-full">
+                                                        <img
+                                                            src={item.product.imgSrc}
+                                                            className="w-24 h-24 object-contain bg-gray-100 rounded-lg p-2"
+                                                            alt={item.product.name}
+                                                        />
+
+                                                        <div className="flex  flex-col gap-1">
+                                                            <h3 className="text-lg font-semibold text-gray-800">{item.product.name}</h3>
+                                                            <div className="flex items-center gap-2">
+                                                                <Rate rate={item.product.rating} />
+                                                                <small className="text-gray-500">{item.product.rating}</small>
+                                                            </div>
+
+                                                            <Button
+                                                                onClick={() => deleteProduct(item.product.id)}
+                                                                className="text-red-500 cursor-pointer flex items-center gap-1 hover:underline"
+                                                                aria-label="remove product"
+                                                            >
+                                                                <Icon icon={ArchiveBoxIcon} /> Remove
+                                                            </Button>
+                                                        </div>
+                                                    </div>
+
+                                                    {/* Right Side Controls */}
+                                                    <div className="flex flex-col items-center mt-5 lg:mt-0 sm:items-end gap-3 sm:flex-row lg:flex-col sm:justify-between w-full">
+                                                        {/* Price */}
+                                                        <span className="text-xl font-semibold text-gray-600">{item.product.price}</span>
+
+                                                        {/* Quantity Controls */}
                                                         <div className="flex items-center gap-2">
-                                                            <Rate rate={item.product.rating} />
-                                                            <small className="text-gray-500">{item.product.rating}</small>
+                                                            <Button
+                                                                onClick={() => decrease(item.product.id)}
+                                                                className="p-1 cursor-pointer rounded-md border border-gray-300"
+                                                                aria-label="decrease count of product"
+                                                            >
+                                                                <Icon icon={MinusIcon} />
+                                                            </Button>
+
+                                                            <span className="px-3 py-0.5 border border-gray-300 rounded-md text-gray-600">
+                                                                {item.amount}
+                                                            </span>
+
+                                                            <Button
+                                                                onClick={() => increase(item.product.id)}
+                                                                aria-label="increase count of product"
+                                                                className="p-1 cursor-pointer rounded-md border border-gray-300"
+                                                            >
+                                                                <Icon icon={PlusIcon} />
+                                                            </Button>
                                                         </div>
 
-                                                        <Button
-                                                            onClick={() => deleteProduct(item.product.id)}
-                                                            className="text-red-500 cursor-pointer flex items-center gap-1 hover:underline"
-                                                        >
-                                                            <Icon icon={ArchiveBoxIcon} /> Remove
-                                                        </Button>
-                                                    </div>
-                                                </div>
-
-                                                {/* Right Side Controls */}
-                                                <div className="flex flex-col items-center mt-5 lg:mt-0 sm:items-end gap-3 sm:flex-row lg:flex-col sm:justify-between w-full">
-                                                    {/* Price */}
-                                                    <span className="text-xl font-semibold text-gray-600">{item.product.price}</span>
-
-                                                    {/* Quantity Controls */}
-                                                    <div className="flex items-center gap-2">
-                                                        <Button
-                                                            onClick={() => decrease(item.product.id)}
-                                                            className="p-1 cursor-pointer rounded-md border border-gray-300"
-                                                        >
-                                                            <Icon icon={MinusIcon} />
-                                                        </Button>
-
-                                                        <span className="px-3 py-0.5 border border-gray-300 rounded-md text-gray-600">
-                                                            {item.amount}
-                                                        </span>
-
-                                                        <Button
-                                                            onClick={() => increase(item.product.id)}
-                                                            className="p-1 cursor-pointer rounded-md border border-gray-300"
-                                                        >
-                                                            <Icon icon={PlusIcon} />
-                                                        </Button>
+                                                        {/* Total */}
+                                                        <span className="text-gray-800 font-medium text-lg">Total: ${item.price}</span>
                                                     </div>
 
-                                                    {/* Total */}
-                                                    <span className="text-gray-800 font-medium text-lg">Total: ${item.price}</span>
                                                 </div>
                                             </Fade>
                                         </div>
@@ -120,7 +126,7 @@ const CartPage = () => {
                                         <label htmlFor="Code" className="text-gray-800 block mb-2 lowercase">Promo Code</label>
                                         <Input name="Code" id="Code" autoComplete="off" aria-label="Enter your Code" placeholder="Enter Promo Code" type="text" className='data-hover:shadow block w-full rounded-lg border outline-0 border-gray-400 bg-white px-3 py-2 text-sm/6 ' />
                                     </div>
-                                    <Btn children='Apply' color="bg-orange-600 px-6 hover:bg-orange-700 text-white border border-orange-500 inline-flex" />
+                                    <Btn children='Apply' aria-label="apply to buy" color="bg-orange-600 px-6 hover:bg-orange-700 text-white border border-orange-500 inline-flex" />
                                 </form>
                             </div>
                             <div className="mt-5 border-t border-t-gray-300 pt-3">

@@ -16,7 +16,7 @@ export const EmptyCart = () => {
             <Btn
                 children="Shop Now"
                 color="bg-orange-400 hover:bg-orange-500 text-white px-6 py-1 rounded"
-                func={() => nav("/all-products")} // بيروح للصفحة الرئيسية أو المنتجات
+                func={() => nav("/all-products")}
             />
         </div>
     );

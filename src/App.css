@@ -14,7 +14,7 @@
         top: 0;
         bottom: -50px;
         left: 0;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.753) , rgba(0, 0, 0, 0.165));
+        background: linear-gradient(to top, rgb(0, 0, 0) , rgba(0, 0, 0, 0.165));
         opacity: 0;
         transition: 0.3s;
     }
@@ -29,11 +29,4 @@
     }
 }
 
-.table-content{
-    max-width: 100%;
-    overflow:hidden;
-    div{
-        width: 1000px;
-        background-color: aqua;
-    }
-}
+
